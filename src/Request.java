@@ -1,6 +1,5 @@
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 /**
  * A request to execute by the server. Contains the necessary objects.
@@ -50,12 +49,12 @@ public class Request implements Serializable {
         param = null;
     }
 
-    public Answer invoke(Stuff stuff) throws InvocationTargetException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException {
+    public Answer invoke(RemoteList remoteList) throws InvocationTargetException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException {
         if (param==null) {
-            return (Answer) (Class.forName("Stuff").getMethod(method_name)).invoke(stuff);
+            return (Answer) (Class.forName(RemoteList.class.getName()).getMethod(method_name)).invoke(remoteList);
         }
         else {
-            return (Answer) (Class.forName("Stuff").getMethod(method_name, param.getClass()).invoke(stuff,param));
+            return (Answer) (Class.forName(RemoteList.class.getName()).getMethod(method_name, param.getClass()).invoke(remoteList,param));
         }
     }
 
