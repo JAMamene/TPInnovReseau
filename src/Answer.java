@@ -8,6 +8,7 @@ import java.util.List;
 public class Answer implements Serializable {
 
     public static final String NORMAL_STATUS = "OK";
+    public static final String BAD_STATUS = "KO";
     private static final long serialVersionUID = 1336L;
     private List<Object> answer;
     private String status;
