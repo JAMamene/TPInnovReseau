@@ -40,6 +40,7 @@ public class Idea implements Serializable {
      * @param idea the idea to copy
      */
     public Idea(Idea idea) {
+        id = idea.getId();
         initiator = idea.getInitiator();
         email = idea.getEmail();
         interested = new ArrayList<>(idea.getInterested());
