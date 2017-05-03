@@ -9,7 +9,6 @@ public class Idea implements Serializable {
 
     private static final long serialVersionUID = 1339L;
 
-    private static int idCounter;
     private int id;
     private String initiator;
     private String email;
@@ -28,13 +27,25 @@ public class Idea implements Serializable {
      * @param technologies - a list of all the technologies that might be involved
      */
     public Idea(String initiator, String email, String name, String description, List<String> technologies) {
-        this.id = idCounter++;
         this.initiator = initiator;
         this.email = email;
         this.interested = new ArrayList<>();
         this.name = name;
         this.description = description;
         this.technologies = technologies;
+    }
+
+    /**
+     * Copy constructor
+     * @param idea the idea to copy
+     */
+    public Idea(Idea idea) {
+        initiator = idea.getInitiator();
+        email = idea.getEmail();
+        interested = new ArrayList<>(idea.getInterested());
+        name = idea.getName();
+        description = idea.getDescription();
+        technologies = new ArrayList<>(idea.getTechnologies());
     }
 
     /**
@@ -46,7 +57,27 @@ public class Idea implements Serializable {
         interested.add(email);
     }
 
-    public List<String> getInterested () {
+    public String getInitiator() {
+        return initiator;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public List<String> getTechnologies() {
+        return technologies;
+    }
+
+    public List<String> getInterested() {
         return interested;
     }
 
@@ -54,16 +85,19 @@ public class Idea implements Serializable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "Idee{" +
-                "id=" + id +
-                ", initiator='" + initiator + '\'' +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", technologies=" + technologies +
-                ", interested=" + interested +
-                "} + \n";
+        return "Idee n°" + id +
+                ":\n intiateur = : " + initiator +
+                "\n email : " + email +
+                "\n name : " + name +
+                "\n description : " + description +
+                "\n technologies : " + technologies +
+                "\n interested : " + interested +
+                "\n\n";
     }
 }
