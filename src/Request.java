@@ -49,12 +49,21 @@ public class Request implements Serializable {
         param = null;
     }
 
+    /**
+     * Executes the client request.
+     *
+     * @param remoteList - the list of ideas
+     * @return the answer to this request
+     * @throws InvocationTargetException - when a method is called with incorrect parameters
+     * @throws IllegalAccessException    - when attempting to call a private method from the remote list
+     * @throws ClassNotFoundException    - when the remoteList class was not found
+     * @throws NoSuchMethodException     - when the method to invoke was not found
+     */
     public Answer invoke(RemoteList remoteList) throws InvocationTargetException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException {
-        if (param==null) {
+        if (param == null) {
             return (Answer) (Class.forName(RemoteList.class.getName()).getMethod(method_name)).invoke(remoteList);
-        }
-        else {
-            return (Answer) (Class.forName(RemoteList.class.getName()).getMethod(method_name, param.getClass()).invoke(remoteList,param));
+        } else {
+            return (Answer) (Class.forName(RemoteList.class.getName()).getMethod(method_name, param.getClass()).invoke(remoteList, param));
         }
     }
 
