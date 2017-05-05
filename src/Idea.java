@@ -93,7 +93,7 @@ public class Idea implements Serializable {
     @Override
     public String toString() {
         return "Idee n°" + id +
-                ":\n intiateur = : " + initiator +
+                ":\n intiateur : " + initiator +
                 "\n email : " + email +
                 "\n name : " + name +
                 "\n description : " + description +
