@@ -37,6 +37,7 @@ public class Idea implements Serializable {
 
     /**
      * Copy constructor
+     *
      * @param idea the idea to copy
      */
     public Idea(Idea idea) {

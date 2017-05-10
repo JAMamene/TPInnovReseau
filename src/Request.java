@@ -55,4 +55,12 @@ public class Request implements Serializable {
     public Object getParam() {
         return param;
     }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "methodName='" + methodName + '\'' +
+                ", param=" + param +
+                '}';
+    }
 }

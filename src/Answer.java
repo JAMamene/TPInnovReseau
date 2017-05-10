@@ -31,4 +31,12 @@ public class Answer implements Serializable {
         return answer;
     }
 
+    @Override
+    public String
+    toString() {
+        return "Answer{" +
+                "answer=" + answer +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
